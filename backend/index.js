@@ -180,5 +180,24 @@ app.post("/user/order", userMiddleware, async function (req, res) {
 
     }
 })
+//rating 
+app.post("/user/rate/:rating",userMiddleware,function(req,res){
+    const rating=parseInt(req.params.rating,10)
+
+    if(rating==5){
+        res.send("Wow..!,Glad to know that your experience was amazing")
+    }
+    else if(rating==4){
+        res.send("Yummy Meal Know..!,Do visit again")
+    }
+    else if(rating==3){
+        res.send("Look like you haven't enjoyed much...Will try to improve")
+    }
+    else if(rating<=1 && rating>=2){
+        res.send("Oops..! Sorry for the service, We promise next time will give it us a 5 star")
+    }
+
+
+})
 
 app.listen(port)
